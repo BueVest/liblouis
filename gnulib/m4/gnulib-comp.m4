@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2018 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this file.  If not, see <https://www.gnu.org/licenses/>.
+# along with this file.  If not, see <http://www.gnu.org/licenses/>.
 #
 # As a special exception to the GNU General Public License,
 # this file may be distributed as part of a program that
@@ -37,20 +37,16 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_ES$])dnl a valid locale name
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
-
-  # Pre-early section.
-  AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   AC_REQUIRE([gl_PROG_AR_RANLIB])
-
   # Code from module absolute-header:
   # Code from module alloca-opt:
   # Code from module dirent:
   # Code from module environ:
   # Code from module extensions:
+  AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   # Code from module extern-inline:
   # Code from module include_next:
   # Code from module lib-msvc-compat:
-  # Code from module limits-h:
   # Code from module malloc-gnu:
   # Code from module malloc-posix:
   # Code from module malloca:
@@ -74,7 +70,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module unistd:
   # Code from module verify:
   # Code from module warnings:
-  # Code from module xalloc-oversized:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -97,7 +92,6 @@ AC_DEFUN([gl_INIT],
   gl_UNISTD_MODULE_INDICATOR([environ])
   AC_REQUIRE([gl_EXTERN_INLINE])
   gl_LD_OUTPUT_DEF
-  gl_LIMITS_H
   gl_FUNC_MALLOC_GNU
   if test $REPLACE_MALLOC = 1; then
     AC_LIBOBJ([malloc])
@@ -280,15 +274,16 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
-  lib/_Noreturn.h
+  build-aux/snippet/_Noreturn.h
+  build-aux/snippet/arg-nonnull.h
+  build-aux/snippet/c++defs.h
+  build-aux/snippet/warn-on-use.h
   lib/alloca.in.h
-  lib/arg-nonnull.h
-  lib/c++defs.h
   lib/dirent.in.h
-  lib/limits.in.h
   lib/malloc.c
   lib/malloca.c
   lib/malloca.h
+  lib/malloca.valgrind
   lib/realloc.c
   lib/setenv.c
   lib/stddef.in.h
@@ -301,8 +296,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/unistd.c
   lib/unistd.in.h
   lib/verify.h
-  lib/warn-on-use.h
-  lib/xalloc-oversized.h
   m4/00gnulib.m4
   m4/absolute-header.m4
   m4/alloca.m4
@@ -314,11 +307,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gnulib-common.m4
   m4/include_next.m4
   m4/ld-output-def.m4
-  m4/limits-h.m4
   m4/longlong.m4
   m4/malloc.m4
   m4/malloca.m4
-  m4/manywarnings-c++.m4
   m4/manywarnings.m4
   m4/multiarch.m4
   m4/off_t.m4
@@ -336,5 +327,4 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/warn-on-use.m4
   m4/warnings.m4
   m4/wchar_t.m4
-  m4/wint_t.m4
 ])

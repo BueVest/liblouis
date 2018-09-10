@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2018 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this file.  If not, see <https://www.gnu.org/licenses/>.
+# along with this file.  If not, see <http://www.gnu.org/licenses/>.
 #
 # As a special exception to the GNU General Public License,
 # this file may be distributed as part of a program that
@@ -37,28 +37,20 @@ AC_DEFUN([gl_tools_EARLY],
   m4_pattern_allow([^gl_ES$])dnl a valid locale name
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
-
-  # Pre-early section.
-  AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   AC_REQUIRE([gl_PROG_AR_RANLIB])
-
   AC_REQUIRE([AM_PROG_CC_C_O])
   # Code from module absolute-header:
-  # Code from module dirname-lgpl:
-  # Code from module dosname:
-  # Code from module double-slash-root:
   # Code from module errno:
   # Code from module error:
   # Code from module extensions:
+  AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   # Code from module extern-inline:
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
-  # Code from module getprogname:
   # Code from module gettext-h:
   # Code from module include_next:
   # Code from module inline:
   # Code from module intprops:
-  # Code from module limits-h:
   # Code from module malloc-gnu:
   # Code from module malloc-posix:
   # Code from module msvc-inval:
@@ -114,8 +106,6 @@ AC_DEFUN([gl_tools_INIT],
   m4_pushdef([gl_tools_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='tools/gnulib'
-  gl_DIRNAME_LGPL
-  gl_DOUBLE_SLASH_ROOT
   gl_HEADER_ERRNO_H
   gl_ERROR
   if test $ac_cv_lib_error_at_line = no; then
@@ -127,22 +117,27 @@ AC_DEFUN([gl_tools_INIT],
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
   AC_REQUIRE([gl_EXTERN_INLINE])
   gl_FUNC_GETOPT_GNU
-  dnl Because of the way gl_FUNC_GETOPT_GNU is implemented (the gl_getopt_required
-  dnl mechanism), there is no need to do any AC_LIBOBJ or AC_SUBST here; they are
-  dnl done in the getopt-posix module.
-  gl_FUNC_GETOPT_POSIX
   if test $REPLACE_GETOPT = 1; then
     AC_LIBOBJ([getopt])
     AC_LIBOBJ([getopt1])
+    gl_PREREQ_GETOPT
     dnl Arrange for unistd.h to include getopt.h.
     GNULIB_GL_GL_TOOLS_UNISTD_H_GETOPT=1
   fi
   AC_SUBST([GNULIB_GL_GL_TOOLS_UNISTD_H_GETOPT])
-  gl_FUNC_GETPROGNAME
+  gl_MODULE_INDICATOR_FOR_TESTS([getopt-gnu])
+  gl_FUNC_GETOPT_POSIX
+  if test $REPLACE_GETOPT = 1; then
+    AC_LIBOBJ([getopt])
+    AC_LIBOBJ([getopt1])
+    gl_PREREQ_GETOPT
+    dnl Arrange for unistd.h to include getopt.h.
+    GNULIB_GL_GL_TOOLS_UNISTD_H_GETOPT=1
+  fi
+  AC_SUBST([GNULIB_GL_GL_TOOLS_UNISTD_H_GETOPT])
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
   gl_INLINE
-  gl_LIMITS_H
   gl_FUNC_MALLOC_GNU
   if test $REPLACE_MALLOC = 1; then
     AC_LIBOBJ([malloc])
@@ -153,15 +148,14 @@ AC_DEFUN([gl_tools_INIT],
     AC_LIBOBJ([malloc])
   fi
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
-  AC_REQUIRE([gl_MSVC_INVAL])
+  gl_MSVC_INVAL
   if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
     AC_LIBOBJ([msvc-inval])
   fi
-  AC_REQUIRE([gl_MSVC_NOTHROW])
+  gl_MSVC_NOTHROW
   if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
     AC_LIBOBJ([msvc-nothrow])
   fi
-  gl_MODULE_INDICATOR([msvc-nothrow])
   gl_MULTIARCH
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
@@ -199,14 +193,14 @@ AC_DEFUN([gl_tools_INIT],
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
   gl_UNISTD_H
-  gl_LIBUNISTRING_LIBHEADER([0.9.4], [unistr.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.2], [unistr.h])
   gl_MODULE_INDICATOR([unistr/u16-mbtoucr])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u16-mbtoucr])
   gl_LIBUNISTRING_MODULE([0.9.3], [unistr/u16-to-u8])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-to-u8])
   gl_MODULE_INDICATOR([unistr/u8-uctomb])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-uctomb])
-  gl_LIBUNISTRING_LIBHEADER([0.9.4], [unitypes.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9], [unitypes.h])
   gl_VERSION_ETC
   # End of code from modules
   m4_ifval(gl_tools_LIBSOURCES_LIST, [
@@ -344,30 +338,20 @@ AC_DEFUN([gl_toolstests_LIBSOURCES], [
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_tools_FILE_LIST], [
-  lib/_Noreturn.h
-  lib/arg-nonnull.h
-  lib/basename-lgpl.c
-  lib/c++defs.h
-  lib/dirname-lgpl.c
-  lib/dirname.h
-  lib/dosname.h
+  build-aux/snippet/_Noreturn.h
+  build-aux/snippet/arg-nonnull.h
+  build-aux/snippet/c++defs.h
+  build-aux/snippet/unused-parameter.h
+  build-aux/snippet/warn-on-use.h
   lib/errno.in.h
   lib/error.c
   lib/error.h
-  lib/getopt-cdefs.in.h
-  lib/getopt-core.h
-  lib/getopt-ext.h
-  lib/getopt-pfx-core.h
-  lib/getopt-pfx-ext.h
   lib/getopt.c
   lib/getopt.in.h
   lib/getopt1.c
   lib/getopt_int.h
-  lib/getprogname.c
-  lib/getprogname.h
   lib/gettext.h
   lib/intprops.h
-  lib/limits.in.h
   lib/malloc.c
   lib/msvc-inval.c
   lib/msvc-inval.h
@@ -385,7 +369,6 @@ AC_DEFUN([gl_tools_FILE_LIST], [
   lib/strerror-override.h
   lib/strerror.c
   lib/string.in.h
-  lib/stripslash.c
   lib/strndup.c
   lib/strnlen.c
   lib/sys_types.in.h
@@ -398,26 +381,20 @@ AC_DEFUN([gl_tools_FILE_LIST], [
   lib/unistr/u8-uctomb-aux.c
   lib/unistr/u8-uctomb.c
   lib/unitypes.in.h
-  lib/unused-parameter.h
   lib/verify.h
   lib/version-etc.c
   lib/version-etc.h
-  lib/warn-on-use.h
   m4/00gnulib.m4
   m4/absolute-header.m4
-  m4/dirname.m4
-  m4/double-slash-root.m4
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
   m4/extern-inline.m4
   m4/getopt.m4
-  m4/getprogname.m4
   m4/gnulib-common.m4
   m4/include_next.m4
   m4/inline.m4
   m4/libunistring-base.m4
-  m4/limits-h.m4
   m4/longlong.m4
   m4/malloc.m4
   m4/msvc-inval.m4
@@ -442,5 +419,4 @@ AC_DEFUN([gl_tools_FILE_LIST], [
   m4/version-etc.m4
   m4/warn-on-use.m4
   m4/wchar_t.m4
-  m4/wint_t.m4
 ])

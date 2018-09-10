@@ -1,5 +1,5 @@
 /* Error handler for noninteractive utilities
-   Copyright (C) 1990-1998, 2000-2007, 2009-2018 Free Software Foundation, Inc.
+   Copyright (C) 1990-1998, 2000-2007, 2009-2014 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    This program is free software: you can redistribute it and/or modify
@@ -13,7 +13,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* Written by David MacKenzie <djm@gnu.ai.mit.edu>.  */
 
@@ -39,11 +39,6 @@
 # include <stdint.h>
 # include <wchar.h>
 # define mbsrtowcs __mbsrtowcs
-# define USE_UNLOCKED_IO 0
-# define _GL_ATTRIBUTE_FORMAT_PRINTF(a, b)
-# define _GL_ARG_NONNULL(a)
-#else
-# include "getprogname.h"
 #endif
 
 #if USE_UNLOCKED_IO
@@ -77,14 +72,14 @@ extern void __error (int status, int errnum, const char *message, ...)
 extern void __error_at_line (int status, int errnum, const char *file_name,
                              unsigned int line_number, const char *message,
                              ...)
-     __attribute__ ((__format__ (__printf__, 5, 6)));
+     __attribute__ ((__format__ (__printf__, 5, 6)));;
 # define error __error
 # define error_at_line __error_at_line
 
 # include <libio/iolibio.h>
-# define fflush(s) _IO_fflush (s)
+# define fflush(s) INTUSE(_IO_fflush) (s)
 # undef putc
-# define putc(c, fp) _IO_putc (c, fp)
+# define putc(c, fp) INTUSE(_IO_putc) (c, fp)
 
 # include <bits/libc-lock.h>
 
@@ -98,32 +93,30 @@ extern void __error_at_line (int status, int errnum, const char *file_name,
 #  define WIN32_LEAN_AND_MEAN
 #  include <windows.h>
 /* Get _get_osfhandle.  */
-#  if GNULIB_MSVC_NOTHROW
-#   include "msvc-nothrow.h"
-#  else
-#   include <io.h>
-#  endif
+#  include "msvc-nothrow.h"
 # endif
 
 /* The gnulib override of fcntl is not needed in this file.  */
 # undef fcntl
 
-# if !(GNULIB_STRERROR_R_POSIX || HAVE_DECL_STRERROR_R)
+# if !HAVE_DECL_STRERROR_R
 #  ifndef HAVE_DECL_STRERROR_R
 "this configure-time declaration test was not run"
 #  endif
 #  if STRERROR_R_CHAR_P
-char *strerror_r (int errnum, char *buf, size_t buflen);
+char *strerror_r ();
 #  else
-int strerror_r (int errnum, char *buf, size_t buflen);
+int strerror_r ();
 #  endif
 # endif
 
-#define program_name getprogname ()
+/* The calling program should define program_name and set it to the
+   name of the executing program.  */
+extern char *program_name;
 
-# if GNULIB_STRERROR_R_POSIX || HAVE_STRERROR_R || defined strerror_r
+# if HAVE_STRERROR_R || defined strerror_r
 #  define __strerror_r strerror_r
-# endif /* GNULIB_STRERROR_R_POSIX || HAVE_STRERROR_R || defined strerror_r */
+# endif /* HAVE_STRERROR_R || defined strerror_r */
 #endif  /* not _LIBC */
 
 #if !_LIBC
@@ -176,9 +169,9 @@ print_errno_message (int errnum)
 {
   char const *s;
 
-#if _LIBC || GNULIB_STRERROR_R_POSIX || defined HAVE_STRERROR_R
+#if defined HAVE_STRERROR_R || _LIBC
   char errbuf[1024];
-# if _LIBC || (!GNULIB_STRERROR_R_POSIX && STRERROR_R_CHAR_P)
+# if STRERROR_R_CHAR_P || _LIBC
   s = __strerror_r (errnum, errbuf, sizeof errbuf);
 # else
   if (__strerror_r (errnum, errbuf, sizeof errbuf) == 0)
@@ -208,6 +201,7 @@ error_tail (int status, int errnum, const char *message, va_list args)
 #if _LIBC
   if (_IO_fwide (stderr, 0) > 0)
     {
+# define ALLOCA_LIMIT 2000
       size_t len = strlen (message) + 1;
       wchar_t *wmessage = NULL;
       mbstate_t st;
@@ -243,7 +237,7 @@ error_tail (int status, int errnum, const char *message, va_list args)
           if (res != len)
             break;
 
-          if (__builtin_expect (len >= SIZE_MAX / sizeof (wchar_t) / 2, 0))
+          if (__builtin_expect (len >= SIZE_MAX / 2, 0))
             {
               /* This really should not happen if everything is fine.  */
               res = (size_t) -1;
@@ -272,6 +266,7 @@ error_tail (int status, int errnum, const char *message, va_list args)
   else
 #endif
     vfprintf (stderr, message, args);
+  va_end (args);
 
   ++error_message_count;
   if (errnum)
@@ -321,7 +316,6 @@ error (int status, int errnum, const char *message, ...)
 
   va_start (args, message);
   error_tail (status, errnum, message, args);
-  va_end (args);
 
 #ifdef _LIBC
   _IO_funlockfile (stderr);
@@ -348,10 +342,7 @@ error_at_line (int status, int errnum, const char *file_name,
 
       if (old_line_number == line_number
           && (file_name == old_file_name
-              || (old_file_name != NULL
-                  && file_name != NULL
-                  && strcmp (old_file_name, file_name) == 0)))
-
+              || strcmp (old_file_name, file_name) == 0))
         /* Simply return and print nothing.  */
         return;
 
@@ -383,16 +374,15 @@ error_at_line (int status, int errnum, const char *file_name,
     }
 
 #if _LIBC
-  __fxprintf (NULL, file_name != NULL ? "%s:%u: " : " ",
+  __fxprintf (NULL, file_name != NULL ? "%s:%d: " : " ",
               file_name, line_number);
 #else
-  fprintf (stderr, file_name != NULL ? "%s:%u: " : " ",
+  fprintf (stderr, file_name != NULL ? "%s:%d: " : " ",
            file_name, line_number);
 #endif
 
   va_start (args, message);
   error_tail (status, errnum, message, args);
-  va_end (args);
 
 #ifdef _LIBC
   _IO_funlockfile (stderr);

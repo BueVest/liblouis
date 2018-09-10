@@ -1,6 +1,6 @@
 /* A GNU-like <string.h>.
 
-   Copyright (C) 1995-1996, 2001-2018 Free Software Foundation, Inc.
+   Copyright (C) 1995-1996, 2001-2014 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,33 +13,17 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, see <https://www.gnu.org/licenses/>.  */
+   along with this program; if not, see <http://www.gnu.org/licenses/>.  */
+
+#ifndef _@GUARD_PREFIX@_STRING_H
 
 #if __GNUC__ >= 3
 @PRAGMA_SYSTEM_HEADER@
 #endif
 @PRAGMA_COLUMNS@
 
-#if defined _GL_ALREADY_INCLUDING_STRING_H
-/* Special invocation convention:
-   - On OS X/NetBSD we have a sequence of nested includes
-       <string.h> -> <strings.h> -> "string.h"
-     In this situation system _chk variants due to -D_FORTIFY_SOURCE
-     might be used after any replacements defined here.  */
-
-#@INCLUDE_NEXT@ @NEXT_STRING_H@
-
-#else
-/* Normal invocation convention.  */
-
-#ifndef _@GUARD_PREFIX@_STRING_H
-
-#define _GL_ALREADY_INCLUDING_STRING_H
-
 /* The include_next requires a split double-inclusion guard.  */
 #@INCLUDE_NEXT@ @NEXT_STRING_H@
-
-#undef _GL_ALREADY_INCLUDING_STRING_H
 
 #ifndef _@GUARD_PREFIX@_STRING_H
 #define _@GUARD_PREFIX@_STRING_H
@@ -73,23 +57,6 @@
 
 /* The definition of _GL_WARN_ON_USE is copied here.  */
 
-
-/* Clear a block of memory.  The compiler will not delete a call to
-   this function, even if the block is dead after the call.  */
-#if @GNULIB_EXPLICIT_BZERO@
-# if ! @HAVE_EXPLICIT_BZERO@
-_GL_FUNCDECL_SYS (explicit_bzero, void,
-                  (void *__dest, size_t __n) _GL_ARG_NONNULL ((1)));
-# endif
-_GL_CXXALIAS_SYS (explicit_bzero, void, (void *__dest, size_t __n));
-_GL_CXXALIASWARN (explicit_bzero);
-#elif defined GNULIB_POSIXCHECK
-# undef explicit_bzero
-# if HAVE_RAW_DECL_EXPLICIT_BZERO
-_GL_WARN_ON_USE (explicit_bzero, "explicit_bzero is unportable - "
-                 "use gnulib module explicit_bzero for portability");
-# endif
-#endif
 
 /* Find the index of the least-significant set bit.  */
 #if @GNULIB_FFSL@
@@ -433,15 +400,15 @@ _GL_WARN_ON_USE (strncat, "strncat is unportable - "
 #   undef strndup
 #   define strndup rpl_strndup
 #  endif
-_GL_FUNCDECL_RPL (strndup, char *, (char const *__s, size_t __n)
+_GL_FUNCDECL_RPL (strndup, char *, (char const *__string, size_t __n)
                                    _GL_ARG_NONNULL ((1)));
-_GL_CXXALIAS_RPL (strndup, char *, (char const *__s, size_t __n));
+_GL_CXXALIAS_RPL (strndup, char *, (char const *__string, size_t __n));
 # else
 #  if ! @HAVE_DECL_STRNDUP@
-_GL_FUNCDECL_SYS (strndup, char *, (char const *__s, size_t __n)
+_GL_FUNCDECL_SYS (strndup, char *, (char const *__string, size_t __n)
                                    _GL_ARG_NONNULL ((1)));
 #  endif
-_GL_CXXALIAS_SYS (strndup, char *, (char const *__s, size_t __n));
+_GL_CXXALIAS_SYS (strndup, char *, (char const *__string, size_t __n));
 # endif
 _GL_CXXALIASWARN (strndup);
 #elif defined GNULIB_POSIXCHECK
@@ -461,17 +428,17 @@ _GL_WARN_ON_USE (strndup, "strndup is unportable - "
 #   undef strnlen
 #   define strnlen rpl_strnlen
 #  endif
-_GL_FUNCDECL_RPL (strnlen, size_t, (char const *__s, size_t __maxlen)
+_GL_FUNCDECL_RPL (strnlen, size_t, (char const *__string, size_t __maxlen)
                                    _GL_ATTRIBUTE_PURE
                                    _GL_ARG_NONNULL ((1)));
-_GL_CXXALIAS_RPL (strnlen, size_t, (char const *__s, size_t __maxlen));
+_GL_CXXALIAS_RPL (strnlen, size_t, (char const *__string, size_t __maxlen));
 # else
 #  if ! @HAVE_DECL_STRNLEN@
-_GL_FUNCDECL_SYS (strnlen, size_t, (char const *__s, size_t __maxlen)
+_GL_FUNCDECL_SYS (strnlen, size_t, (char const *__string, size_t __maxlen)
                                    _GL_ATTRIBUTE_PURE
                                    _GL_ARG_NONNULL ((1)));
 #  endif
-_GL_CXXALIAS_SYS (strnlen, size_t, (char const *__s, size_t __maxlen));
+_GL_CXXALIAS_SYS (strnlen, size_t, (char const *__string, size_t __maxlen));
 # endif
 _GL_CXXALIASWARN (strnlen);
 #elif defined GNULIB_POSIXCHECK
@@ -1060,4 +1027,3 @@ _GL_WARN_ON_USE (strverscmp, "strverscmp is unportable - "
 
 #endif /* _@GUARD_PREFIX@_STRING_H */
 #endif /* _@GUARD_PREFIX@_STRING_H */
-#endif
