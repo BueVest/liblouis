@@ -18,7 +18,7 @@
 #  License along with liblouis. If not, see
 #  <http://www.gnu.org/licenses/>.
 #
-# Version: Bue Vester-Andersen, 170604
+# Version: Bue Vester-Andersen, 190801
 
 # This table is preliminary work.
 # So far, it has been impossible to obtain any authoritative sources
@@ -54,16 +54,16 @@ space \r 257 CARRIAGE RETURN (CR)
 # Definition of dot cells
 space \s 0
 punctuation ! 235 EXCLAMATION MARK
-punctuation " 2356 QUOTATION MARK
-sign & 12346 AMPERSAND
-punctuation ' 4 APOSTROPHE
-punctuation ( 236 LEFT PARENTHESIS
-punctuation ) 356 RIGHT PARENTHESIS
-punctuation * 35 ASTERISK
+punctuation " 236 QUOTATION MARK
+#sign & 12346 AMPERSAND
+punctuation ' 3 APOSTROPHE
+punctuation ( 2356 LEFT PARENTHESIS
+punctuation ) 2356 RIGHT PARENTHESIS
+#punctuation * 35 ASTERISK
 punctuation , 2 COMMA
 punctuation - 36 HYPHEN-MINUS
-punctuation . 3 FULL STOP
-punctuation / 34 SLASH
+punctuation . 256 FULL STOP
+#punctuation / 34 SLASH
 punctuation : 25 COLON
 punctuation ; 23 SEMICOLON
 punctuation ? 26 QUESTION MARK
@@ -71,42 +71,48 @@ include latinLetterDef6Dots.uti
 
 include digits6Dots.uti
 
-punctuation \x00a7 346 SECTION SIGN (0xa7)
+#punctuation \x00a7 346 SECTION SIGN (0xa7)
 
-uplow \x00c5\x00e5 16 LATIN LETTER A WITH RING ABOVE
-uplow \x00c6\x00e6 345 LATIN LETTER AE
-uplow \x00d8\x00f8 246 LATIN LETTER O WITH STROKE
-uplow \x00dc\x00fc 1256 LATIN CAPITAL LETTER U WITH DIAERESIS
-math \x00f7 256 DIVISION SIGN
+uplow Áá 16 LATIN LETTER A WITH ACUTE
+#uplow Åå 16 LATIN LETTER A WITH RING ABOVE
+uplow Ææ 345 LATIN LETTER AE
+uplow Éé 2346 LATIN LETTER E WITH ACUTE 
+uplow Íí 126 LATIN LETTER I WITH ACUTE
+uplow \x00d0\x00f0 156 LATIN LETTER ETH
+uplow Óó 1456 LATIN LETTER O WITH ACUTE
+uplow Øø 246 LATIN LETTER O WITH STROKE
+uplow Úú 12456 LATIN LETTER U WITH ACUTE
+#uplow \x00dc\x00fc 1256 LATIN CAPITAL LETTER U WITH DIAERESIS
+uplow Ýý 12346 LATIN LETTER Y WITH ACUTE (infinite?)
+#math \x00f7 256 DIVISION SIGN
 
 # cover all other Braille patterns
 include braille-patterns.cti
 
 # Characters with two or more cells
 
-punctuation # 45-3456 NUMBER SIGN
-sign $ 45-256 DOLLAR SIGN
+#punctuation # 45-3456 NUMBER SIGN
+#sign $ 45-256 DOLLAR SIGN
 math % 245-356 PERCENT SIGN
 #sign & 6-12346 AMPERSAND
 #punctuation * 6-35 ASTERISK
-math + 45-235 PLUS SIGN
-math < 45-134 LESS-THAN SIGN
-math = 45-2356 EQUALS SIGN
-math > 45-234 GREATER-THAN SIGN
-sign @ 45-1 COMMERCIAL AT
-punctuation [ 5-236 LEFT SQUARE BRACKET
-punctuation \\ 45-16 REVERSE SLASH
-punctuation ] 5-356 RIGHT SQUARE BRACKET
-punctuation ^ 45-346 CIRCUMFLEX ACCENT
-punctuation _ 45-36 LOW LINE
-punctuation ` 4 GRAVE ACCENT
-punctuation { 45-246 LEFT CURLY BRACKET
-punctuation | 4568 VERTICAL LINE
-punctuation } 45-135 RIGHT CURLY BRACKET
-punctuation ~ 467 TILDE (changed by pass 2 to not conflict with indicators
-
-# Misc unicode characters
-include da-dk-6miscChars.cti
+#math + 45-235 PLUS SIGN
+#math < 45-134 LESS-THAN SIGN
+#math = 45-2356 EQUALS SIGN
+#math > 45-234 GREATER-THAN SIGN
+#sign @ 45-1 COMMERCIAL AT
+#punctuation [ 5-236 LEFT SQUARE BRACKET
+#punctuation \\ 45-16 REVERSE SLASH
+#punctuation ] 5-356 RIGHT SQUARE BRACKET
+#punctuation ^ 45-346 CIRCUMFLEX ACCENT
+#punctuation _ 45-36 LOW LINE
+#punctuation ` 4 GRAVE ACCENT
+#punctuation { 45-246 LEFT CURLY BRACKET
+#punctuation | 4568 VERTICAL LINE
+#punctuation } 45-135 RIGHT CURLY BRACKET
+#punctuation ~ 467 TILDE (changed by pass 2 to not conflict with indicators
+sign \x0096 36-36 #EN DASH (0x96)
+noback sign \x0097 36-36 #Em DASH (0x97)
 
 # Litdigits
 include litdigits6Dots.uti
@@ -117,7 +123,7 @@ undefined 26
 
 #hyphen - 36
 
-letsign 6
+#letsign 25
 
 # No letsign before capital letters or letters with accents
 
@@ -145,15 +151,15 @@ endemphphrase underline after 56
 begemphword underline 56
 endemphword underline 56
 
-capsletter 46
-begcapsword 456
+capsletter 6
+begcapsword 6-6
 endcapsword 6
-multind 6-46 letsign capsletter
-multind 46-6 capsletter letsign
-multind 6-456 letsign begcapsword
+#multind 6-46 letsign capsletter
+#multind 46-6 capsletter letsign
+#multind 6-456 letsign begcapsword
 
 numsign 3456
-multind 6-3456 letsign numsign
+#multind 6-3456 letsign numsign
 
 #class of none-space characters that demand double dashes
 # Used in context lines later.
