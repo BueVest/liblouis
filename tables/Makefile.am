@@ -13,6 +13,7 @@ table_files = \
 	as.tbl \
 	awa.tbl \
 	aw-in-g1.utb \
+	ba.utb \
 	be-in-g1.utb \
 	bengali.cti \
 	bg.ctb \
@@ -111,6 +112,7 @@ table_files = \
 	en_US-comp8-ext.tbl \
 	en-us-comp8-ext.utb \
 	en-us-compbrl.uti \
+	en-us-emphasis.uti \
 	en-us-g1.ctb \
 	en-us-g2.ctb \
 	en-us-interline.ctb \
@@ -306,9 +308,8 @@ table_files = \
 	ru.ctb \
 	ru-letters.dis \
 	ru-litbrl.ctb \
+	ru-litbrl-detailed.utb \
 	ru-ru.dis \
-	ru-ru-g1.utb \
-	ru.tbl \
 	ru-unicode.dis \
 	sa-in-g1.utb \
 	sa.tbl \
