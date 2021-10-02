@@ -55,6 +55,7 @@ table_files = \
 	cy.tbl \
 	da-dk-6miscChars.cti \
 	da-dk-8miscChars.cti \
+	da-dk-g08.ctb \
 	da-dk-g16.ctb \
 	da-dk-g16-lit.ctb \
 	da-dk-g18.ctb \
@@ -65,7 +66,18 @@ table_files = \
 	da-dk-g28.ctb \
 	da-dk-g28l.ctb \
 	da-dk-octobraille.dis \
+	da-dk-6miscChars_93.cti \
+	da-dk-8miscChars_93.cti \
 	da-dk-g08_93.ctb \
+	da-dk-g16_93.ctb \
+	da-dk-g16-lit_93.ctb \
+	da-dk-g18_93.ctb \
+	da-dk-g26_93.ctb \
+	da-dk-g26l_93.ctb \
+	da-dk-g26-lit_93.ctb \
+	da-dk-g26l-lit_93.ctb \
+	da-dk-g28_93.ctb \
+	da-dk-g28l_93.ctb \
 	da-dk-octobraille_93.dis \
 	de-accents.cti \
 	de-accents-detailed.cti \
