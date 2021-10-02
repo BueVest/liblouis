@@ -78,7 +78,7 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/cop-eg.yaml			  \
 	braille-specs/cs_harness.yaml			  \
 	braille-specs/cs-comp8_harness.yaml		  \
-	braille-specs/da-dk-g08.yaml			  \
+	braille-specs/da-dk-g08_93.yaml			  \
 	braille-specs/da-dk-g16.yaml			  \
 	braille-specs/da-dk-g16-dictionary_harness.yaml	  \
 	braille-specs/da-dk-g16-lit.yaml		  \
