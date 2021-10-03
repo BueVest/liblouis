@@ -93,7 +93,10 @@ punctuation , 2 COMMA
 punctuation - 36 HYPHEN-MINUS
 punctuation . 3 FULL STOP
 punctuation / 348 SLASH
+
+# Digits
 include digits8Dots.uti
+
 punctuation : 25 COLON
 punctuation ; 23 SEMICOLON
 math < 358 LESS-THAN SIGN
@@ -101,64 +104,19 @@ math = 23568 EQUALS SIGN
 math > 267 GREATER-THAN SIGN
 punctuation ? 26 QUESTION MARK
 sign @ 178 COMMERCIAL AT
-uppercase A 17 Latin capital letter A
-uppercase B 127 Latin capital letter B
-uppercase C 147 Latin capital letter C
-uppercase D 1457 Latin capital letter D
-uppercase E 157 Latin capital letter E
-uppercase F 1247 Latin capital letter F
-uppercase G 12457 Latin capital letter G
-uppercase H 1257 Latin capital letter H
-uppercase I 247 Latin capital letter I
-uppercase J 2457 Latin capital letter J
-uppercase K 137 Latin capital letter K
-uppercase L 1237 Latin capital letter L
-uppercase M 1347 Latin capital letter M
-uppercase N 13457 Latin capital letter N
-uppercase O 1357 Latin capital letter O
-uppercase P 12347 Latin capital letter P
-uppercase Q 123457 Latin capital letter Q
-uppercase R 12357 Latin capital letter R
-uppercase S 2347 Latin capital letter S
-uppercase T 23457 Latin capital letter T
-uppercase U 1367 Latin capital letter U
-uppercase V 12367 Latin capital letter V
-uppercase W 24567 Latin capital letter W
-uppercase X 13467 Latin capital letter X
-uppercase Y 134567 Latin capital letter Y
-uppercase Z 13567 Latin capital letter Z
+
+# Latin letters
+include latinLetterDef8Dots.uti
+
 punctuation [ 23678 LEFT SQUARE BRACKET
 punctuation \\ 347 REVERSE SLASH
 punctuation ] 35678 RIGHT SQUARE BRACKET
 punctuation ^ 12348 CIRCUMFLEX ACCENT
 punctuation _ 3678 LOW LINE
 punctuation ` 5 GRAVE ACCENT
-lowercase a 1 Latin small letter A
-lowercase b 12 Latin small letter B
-lowercase c 14 Latin small letter C
-lowercase d 145 Latin small letter D
-lowercase e 15 Latin small letter E
-lowercase f 124 Latin small letter F
-lowercase g 1245 Latin small letter G
-lowercase h 125 Latin small letter H
-lowercase i 24 Latin small letter I
-lowercase j 245 Latin small letter J
-lowercase k 13 Latin small letter K
-lowercase l 123 Latin small letter L
-lowercase m 134 Latin small letter M
-lowercase n 1345 Latin small letter N
-lowercase o 135 Latin small letter O
-lowercase p 1234 Latin small letter P
-lowercase q 12345 Latin small letter Q
-lowercase r 1235 Latin small letter R
-lowercase s 234 Latin small letter S
-lowercase t 2345 Latin small letter T
-lowercase u 136 Latin small letter U
-lowercase v 1236 Latin small letter V
-lowercase w 2456 Latin small letter W
-lowercase x 1346 Latin small letter X
-lowercase y 13456 Latin small letter Y
-lowercase z 1356 Latin small letter Z
+
+# Lowercase letters, see above
+
 punctuation { 123678 LEFT CURLY BRACKET
 punctuation | 4568 VERTICAL LINE
 punctuation } 345678 RIGHT CURLY BRACKET
@@ -174,11 +132,11 @@ sign \x2020 45 #Dagger (0x86
 sign \x2021 456 #Double dagger (0x87
 sign \x02c6 5678 #Modifier letter circumflex (0x88)
 math \x2030 245678 #permille sign (0x89)
-uppercase \x0160 46 #Latin  capital Letter S with caron (0x8a/0x9a)
+uplow \x0160\x0161 46,2348 #Latin Letter S with caron (0x8a/0x9a)
 punctuation \x2039 23578 #SINGLE LEFT-POINTING ANGLE QUOTATION MARK (0x8b)
-uppercase \x0152 13578 #Latin capital LIGATURE OE (0x8c)
+uplow \x0152\x0153 13578,1358 #Latin LIGATURE OE (0x8c, 0x9c)
 sign \x008d 3567 REVERSE LINE FEED (not defined in cp1252)
-uppercase \x017d 3467 #Latin capital letter Z with caron (0x8e)
+uplow \x017d\x017e 3467,346 #Latin capital letter Z with caron (0x8e, 0x9e)
 sign \x008f 27 SINGLE SHIFT THREE (not defined in cp1252)
 sign \x0090 357 DEVICE CONTROL STRING (not defined in cp1252)
 punctuation \x2018 47 #LEFT SINGLE QUOTATION MARK (0x91)
@@ -190,11 +148,8 @@ sign \x2013 368 #EN DASH (0x96)
 sign \x2014 367 #Em DASH (0x97)
 sign \x02DC 23478 #small TILDE (0x98)
 sign \x2122 234578 #TRADE MARK SIGN (0x99)
-lowercase \x0161 2348 #Latin  lowercase Letter S with caron (0x8a/0x9a)
 punctuation \x203A 4567 #SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (0x9b)
-lowercase \x0153 1358 #Latin small LIGATURE OE (0x9c)
 letter \x009d 2567 OPERATING SYSTEM COMMAND
-lowercase \x017E 346 #Latin small letter Z with caron (0x9e)
 uppercase \x0178 2345678 #Latin capital letter Y with DIAERESIS (0x9f)
 space \x00a0 23458 NO-BREAK SPACE (0xa0)
 punctuation \x00a1 256 INVERTED EXCLAMATION MARK )0xa1)
@@ -228,69 +183,39 @@ punctuation \x00bc 1368 VULGAR FRACTION ONE QUARTER
 punctuation \x00bd 468 VULGAR FRACTION ONE HALF
 punctuation \x00be 13468 VULGAR FRACTION THREE QUARTERS
 punctuation \x00bf 34 INVERTED QUESTION MARK
-uppercase \x00c0 123567 Latin capital letter A with GRAVE
-uppercase \x00c1 1235678 Latin capital letter A with acute
-uppercase \x00c2 1678 Latin capital letter A with CIRCUMFLEX
-uppercase \x00c3 14678 Latin capital letter A with TILDE
-uppercase \x00c4 34578 Latin capital letter A with DIAERESIS
-uppercase \x00c5 167 Latin capital letter A with RING ABOVE
-uppercase \x00c6 3457 Latin capital letter AE
-uppercase \x00c7 123467 Latin capital letter C with CEDILLA
-uppercase \x00c8 23467 Latin capital letter E with GRAVE
-uppercase \x00c9 1234567 Latin capital letter E with acute
-uppercase \x00ca 1267 Latin capital letter E with CIRCUMFLEX
-uppercase \x00cb 12467 Latin capital letter E with DIAERESIS
-uppercase \x00cc 15678 Latin capital letter I with GRAVE
-uppercase \x00cd 12678 Latin capital letter I with acute
-uppercase \x00ce 1467 Latin capital letter I with CIRCUMFLEX
-uppercase \x00cf 124567 Latin capital letter I with DIAERESIS
-uppercase \x00d0 67 Latin capital letter ETH
-uppercase \x00d1 1245678 Latin capital letter N with TILDE
-uppercase \x00d2 124678 Latin capital letter O with GRAVE
-uppercase \x00d3 34678 Latin capital letter O with acute
-uppercase \x00d4 14567 Latin capital letter O with CIRCUMFLEX
-uppercase \x00d5 145678 Latin capital letter O with TILDE
-uppercase \x00d6 24678 Latin capital letter O with DIAERESIS
+uplow \x00c0\x00e0 123567,12356 Latin letter A with GRAVE
+uplow \x00c1\x00e1 1235678,123568 Latin letter A with acute
+uplow \x00c2\x00e2 1678,168 Latin letter A with CIRCUMFLEX
+uplow \x00c3\x00e3 14678,1468 Latin letter A with TILDE
+uplow \x00c4\x00e4 34578,3458 Latin letter A with DIAERESIS
+uplow \x00c5\x00e5 167,16 Latin letter A with RING ABOVE
+uplow \x00c6\x00e6 3457,345 Latin letter AE
+uplow \x00c7\x00e7 123467,12346 Latin letter C with CEDILLA
+uplow \x00c8\x00e8 23467,2346 Latin letter E with GRAVE
+uplow \x00c9\x00e9 1234567,123456 Latin letter E with acute
+uplow \x00ca\x00ea 1267,126 Latin letter E with CIRCUMFLEX
+uplow \x00cb\x00eb 12467,1246 Latin letter E with DIAERESIS
+uplow \x00cc\x00ec 15678,1568 Latin letter I with GRAVE
+uplow \x00cd\x00ed 12678,1268 Latin letter I with acute
+uplow \x00ce\x00ee 1467,146 Latin letter I with CIRCUMFLEX
+uplow \x00cf\x00ef 124567,12456 Latin letter I with DIAERESIS
+uplow \x00d0\x00f0 67,134568 Latin letter ETH
+uplow \x00d1\x00f1 1245678,124568 Latin letter N with TILDE
+uplow \x00d2\x00f2 124678,12468 Latin letter O with GRAVE
+uplow \x00d3\x00f3 34678,3468 Latin letter O with acute
+uplow \x00d4\x00f4 14567,1456 Latin letter O with CIRCUMFLEX
+uplow \x00d5\x00f5 145678,14568 Latin letter O with TILDE
+uplow \x00d6\x00f6 24678,2468 Latin letter O with DIAERESIS
 math \x00d7 3456 MULTIPLICATION SIGN
-uppercase \x00d8 2467 Latin capital letter O with STROKE
-uppercase \x00d9 234567 Latin capital letter U with GRAVE
-uppercase \x00da 125678 Latin capital letter U with acute
-uppercase \x00db 1567 Latin capital letter U with CIRCUMFLEX
-uppercase \x00dc 12567 Latin capital letter U with DIAERESIS
-uppercase \x00dd 235678 Latin capital letter Y with acute (infinite?)
-uppercase \x00de 1378 Latin capital letter THORN
+uplow \x00d8\x00f8 2467,246 Latin letter O with STROKE
+uplow \x00d9\x00f9 234567,23456 Latin letter U with GRAVE
+uplow \x00da\x00fa 125678,12568 Latin letter U with acute
+uplow \x00db\x00fb 1567,156 Latin letter U with CIRCUMFLEX
+uplow \x00dc\x00fc 12567,1256 Latin letter U with DIAERESIS
+uplow \x00dd\x00fd 235678,1348 Latin letter Y with acute (infinite?)
+uplow \x00de\x00fe 1378,138 Latin letter THORN
 lowercase \x00df 23468 Latin small letter SHARP S
-lowercase \x00e0 12356 Latin small letter A with GRAVE
-lowercase \x00e1 123568 Latin small letter A with acute
-lowercase \x00e2 168 Latin small letter A with CIRCUMFLEX
-lowercase \x00e3 1468 Latin small letter A with TILDE
-lowercase \x00e4 3458 Latin small letter A with DIAERESIS
-lowercase \x00e5 16 Latin small letter A with RING ABOVE
-lowercase \x00e6 345 Latin small letter AE
-lowercase \x00e7 12346 Latin small letter C with CEDILLA
-lowercase \x00e8 2346 Latin small letter E with GRAVE
-lowercase \x00e9 123456 Latin small letter E with acute
-lowercase \x00ea 126 Latin small letter E with CIRCUMFLEX
-lowercase \x00eb 1246 Latin small letter E with DIAERESIS
-lowercase \x00ec 1568 Latin small letter I with GRAVE
-lowercase \x00ed 1268 Latin small letter I with acute
-lowercase \x00ee 146 Latin small letter I with CIRCUMFLEX
-lowercase \x00ef 12456 Latin small letter I with DIAERESIS
-lowercase \x00f0 134568 Latin small letter ETH
-lowercase \x00f1 124568 Latin small letter N with TILDE
-lowercase \x00f2 12468 Latin small letter O with GRAVE
-lowercase \x00f3 3468 Latin small letter O with acute
-lowercase \x00f4 1456 Latin small letter O with CIRCUMFLEX
-lowercase \x00f5 14568 Latin small letter O with TILDE
-lowercase \x00f6 2468 Latin small letter O with DIAERESIS
 math \x00f7 2568 DIVISION SIGN
-lowercase \x00f8 246 Latin small letter O with STROKE
-lowercase \x00f9 23456 Latin small letter U with GRAVE
-lowercase \x00fa 12568 Latin small letter U with acute
-lowercase \x00fb 156 Latin small letter U with CIRCUMFLEX
-lowercase \x00fc 1256 Latin small letter U with DIAERESIS
-lowercase \x00fd 1348 Latin small letter Y with acute
-lowercase \x00fe 138 Latin small letter THORN
 lowercase \x00ff 234568 Latin small letter Y with DIAERESIS
 
 # In CP-1252 the following chars are different from Unicode.
@@ -304,12 +229,10 @@ letter \x0086 45 #Dagger (0x86
 letter \x0087 456 #Double dagger (0x87
 letter \x0088 5678 #Modifier letter circumflex (0x88)
 math \x0089 245678 #permille sign (0x89)
-uppercase \x008a 46 #Latin letter S with caron (0x8a)
+uplow \x008a\x009a 46,2348 #Latin letter S with caron (0x8a)
 punctuation \x008b 23578 #SINGLE LEFT-POINTING ANGLE QUOTATION MARK (0x8b)
-uppercase \x008c 13578 #Latin LIGATURE OE (0x8c)
-lowercase \x009c 1358
-uppercase \x008e 3467 #Latin capital letter Z with caron (0x8e)
-lowercase \x009e 346
+uplow \x008c\x009c 13578,1358 #Latin LIGATURE OE (0x8c)
+uplow \x008e\x009e 3467,346 #Latin letter Z with caron (0x8e)
 punctuation \x0091 47 #LEFT SINGLE QUOTATION MARK (0x91)
 punctuation \x0092 48 #RIGHT SINGLE QUOTATION MARK (0x92)
 punctuation \x0093 237 #LEFT DOUBLE QUOTATION MARK (0x93)
@@ -319,7 +242,6 @@ sign \x0096 368 #EN DASH (0x96)
 sign \x0097 367 #Em DASH (0x97)
 sign \x0098 23478 #small TILDE (0x98)
 sign \x0099 234578 #TRADE MARK SIGN (0x99)
-lowercase \x009a 2348
 punctuation \x009b 4567 #SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (0x9b)
 uppercase \x009f 2345678 #Latin capital letter Y with DIAERESIS (0x9f)
 
