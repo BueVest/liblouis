@@ -11,6 +11,7 @@ EXTRA_DIST =					\
 	cop-eg.yaml				\
 	cs_harness.yaml				\
 	cs-comp8_harness.yaml			\
+	da-dk-g08.yaml				\
 	da-dk-g08_93.yaml				\
 	da-dk-g16_93.yaml				\
 	da-dk-g16-dictionary_harness_93.yaml	\
