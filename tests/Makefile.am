@@ -72,6 +72,8 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/ar-ar-g1_harness.yaml		  \
 	braille-specs/ar-ar-g2.yaml			  \
 	braille-specs/ba.yaml				  \
+	braille-specs/bel.yaml				  \
+	braille-specs/bg.yaml				  \
 	braille-specs/chr-us-g1_harness.yaml		  \
 	braille-specs/cop-eg.yaml			  \
 	braille-specs/cs_harness.yaml			  \
@@ -90,24 +92,24 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/da-dk-g28-dictionary_harness.yaml	  \
 	braille-specs/da-dk-g28.yaml			  \
 	braille-specs/da-dk-g28l.yaml			  \
-	braille-specs/de-ch-g1-dictionary.yaml		  \
-	braille-specs/de-ch-g2-dictionary.yaml		  \
-	braille-specs/de-ch-g1.yaml			  \
+	braille-specs/de-comp6.yaml			  \
 	braille-specs/de-de-comp8.yaml 			  \
-	braille-specs/de-emphasis.yaml 			  \
 	braille-specs/de-eurobrl6.yaml			  \
-	braille-specs/de-g0-bidi-dictionary.yaml	  \
-	braille-specs/de-g0-bidi-specs.yaml		  \
-	braille-specs/de-g0-specs.yaml		  \
-	braille-specs/de-g1-bidi-dictionary.yaml	  \
-	braille-specs/de-g1-bidi-specs.yaml		  \
-	braille-specs/de-g1-specs.yaml		  \
-	braille-specs/de-g2-specs.yaml		  \
+	braille-specs/de-g0-detailed-dictionary.yaml	  \
+	braille-specs/de-g0-detailed-specs.yaml		  \
+	braille-specs/de-g0.yaml			  \
+	braille-specs/de-g1-detailed-dictionary.yaml	  \
+	braille-specs/de-g1-detailed-specs.yaml		  \
+	braille-specs/de-g1.yaml			  \
+	braille-specs/de-g1-dictionary.yaml		  \
+	braille-specs/de-g2.yaml			  \
+	braille-specs/de-g2-sbs.yaml			  \
+	braille-specs/de-g2-detailed-specs.yaml		  \
+	braille-specs/de-g2-dictionary.yaml		  \
 	braille-specs/el-backward.yaml			  \
 	braille-specs/el-forward.yaml			  \
 	braille-specs/en-g3.yaml		  \
-	braille-specs/en-GB-g2_backward.yaml		  \
-	braille-specs/en-GB-g2_harness.yaml		  \
+	braille-specs/en-GB-g2.yaml			  \
 	braille-specs/en-gb-g1_harness.yaml		  \
 	braille-specs/en-nabcc.yaml			  \
 	braille-specs/en-ueb-02-stand_alone.yaml	  \
@@ -156,12 +158,21 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/hu-hu-comp8_harness.yaml		  \
 	braille-specs/hu-hu-g1_backward.yaml		  \
 	braille-specs/hu-hu-g1_harness.yaml		  \
+	braille-specs/hu-hu-g1_braille_input_backward.yaml\
+	braille-specs/hu-hu-g1_braille_input_forward.yaml \
+	braille-specs/hu-hu-g1-numbers.yaml		  \
+	braille-specs/hu-hu-g1_special_consonants.yaml		  \
 	braille-specs/hu-hu-g2_harness.yaml 		  \
 	braille-specs/hu-hu-g2_backward.yaml 		  \
+	braille-specs/hu-hu-g2-numbers.yaml		  \
 	braille-specs/iu-ca-g1_harness.yaml		  \
+	braille-specs/ja-kantenji.yaml			  \
+	braille-specs/kk.yaml				  \
+	braille-specs/kmr.yaml				  \
 	braille-specs/ko-2006-g2_harness.yaml		  \
 	braille-specs/ko-g2_harness.yaml		  \
 	braille-specs/litdigits6Dots_backward.yaml	  \
+	braille-specs/lg-ug-g1.yaml			  \
 	braille-specs/lt_harness.yaml			  \
 	braille-specs/lt-6dot_harness.yaml		  \
 	braille-specs/lv_harness.yaml			  \
@@ -169,7 +180,6 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/mn-MN_harness.yaml		  \
 	braille-specs/ms-my-g2.yaml			  \
 	braille-specs/nl-comp8_harness.yaml		  \
-	braille-specs/nl-NL-g0_harness.yaml		  \
 	braille-specs/nl-g0_harness.yaml		  \
 	braille-specs/no_8dot_harness.yaml		  \
 	braille-specs/no_backward.yaml			  \
@@ -177,25 +187,37 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/no_g2_harness.yaml		  \
 	braille-specs/no_harness.yaml			  \
 	braille-specs/no_typeform_harness.yaml		  \
+	braille-specs/pa.yaml				  \
+	braille-specs/pl-g1.yaml			  \
 	braille-specs/pl-pl-comp8_harness.yaml		  \
-	braille-specs/Pl-Pl-g1_backward.yaml		  \
-	braille-specs/Pl-Pl-g1_harness.yaml		  \
 	braille-specs/pt-g1.yaml			  \
-	braille-specs/sk-g1_harness.yaml		  \
 	braille-specs/ru.yaml				  \
+	braille-specs/rw-rw-g1.yaml			  \
+	braille-specs/sah.yaml				  \
+	braille-specs/sk-g1_harness.yaml		  \
 	braille-specs/sl-g1.yaml			  \
 	braille-specs/spaces.yaml			  \
 	braille-specs/sr-g1_harness.yaml		  \
+	braille-specs/st-g2.yaml			  \
 	braille-specs/ta-ta-g1_harness.yaml		  \
+	braille-specs/tt.yaml				  \
 	braille-specs/uk.yaml				  \
 	braille-specs/ur-pk-g2.yaml			  \
 	braille-specs/uz.yaml				  \
-	braille-specs/vi-g1_backward.yaml		  \
-	braille-specs/vi-g1_harness.yaml		  \
+	braille-specs/ve-g2.yaml			  \
+	braille-specs/vi.yaml				  \
+	braille-specs/xh-g2.yaml			  \
 	braille-specs/zh-chn.yaml			  \
 	braille-specs/zh-tw.yaml			  \
+	braille-specs/zhcn-cbs.yaml			  \
 	braille-specs/zhcn-g1.yaml			  \
 	braille-specs/zhcn-g2.yaml
+
+if HAVE_UCS4
+# This test hangs when configured without --enable-ucs4
+dist_braille_specs_TESTS +=				\
+	braille-specs/hu-hu-g1-hyph_harness.yaml
+endif
 
 dist_yaml_TESTS =				\
 	yaml/attribute.yaml			\
@@ -211,6 +233,7 @@ dist_yaml_TESTS =				\
 	yaml/computer_braille.yaml		\
 	yaml/emphasis.yaml			\
 	yaml/example_test.yaml			\
+	yaml/face-with-tears-of-joy.yaml        \
 	yaml/hyphenation.yaml			\
 	yaml/hyphenation_nocross_harness.yaml	\
 	yaml/inpos_outpos.yaml			\
@@ -218,6 +241,7 @@ dist_yaml_TESTS =				\
 	yaml/issue-332.yaml			\
 	yaml/issue-479.yaml			\
 	yaml/issue-615.yaml			\
+	yaml/issue-963.yaml			\
 	yaml/letterDefTest_harness.yaml		\
 	yaml/multipass-backward.yaml		\
 	yaml/multipass-forward.yaml		\
@@ -226,9 +250,11 @@ dist_yaml_TESTS =				\
 	yaml/multipass-vs-match.yaml		\
 	yaml/new_emph.yaml			\
 	yaml/noletsignafter.yaml		\
+	yaml/nonumsign.yaml			\
 	yaml/numericmode.yaml			\
 	yaml/partialTrans.yaml			\
 	yaml/pass0_typebuf.yaml			\
+	yaml/precedence.yaml			\
 	yaml/present_progressive.yaml		\
 	yaml/repword.yaml			\
 	yaml/squash_space.yaml			\
@@ -236,10 +262,16 @@ dist_yaml_TESTS =				\
 	yaml/undefined.yaml			\
 	yaml/various-regression-tests.yaml
 
-# This test hangs when configured without --enable-ucs4
+# Yaml tests that require ucs4
 if HAVE_UCS4
 dist_yaml_TESTS +=				\
-	braille-specs/hu-hu-g1-hyph_harness.yaml
+	yaml/face-with-tears-of-joy-ucs4.yaml
+endif
+
+# Tests for macros
+if ENABLE_MACROS
+dist_yaml_TESTS +=				\
+	yaml/macro.yaml
 endif
 
 YAML_LOG_COMPILER_SCRIPT = yaml-log-compiler.sh
@@ -249,6 +281,7 @@ LOG_COMPILE = $(WINE)
 
 EXTRA_DIST = $(dist_yaml_TESTS) $(dist_braille_specs_TESTS) $(YAML_LOG_COMPILER_SCRIPT)
 
+# ueb_test_data.pl fails (see also issues #764 and #268)
 XFAIL_TESTS =					\
 	ueb_test_data.pl
 

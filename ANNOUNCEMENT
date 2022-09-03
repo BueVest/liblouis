@@ -1,7 +1,7 @@
-liblouis 3.16.0 has been released
+liblouis 3.22.0 has been released
 
 The liblouis developer team is proud to announce the liblouis release
-3.16.0. The release is available for download at:
+3.22.0. The release is available for download at:
 
 https://github.com/liblouis/liblouis/releases
 
@@ -18,13 +18,15 @@ liblouisutdml [2]_ deals with formatting of braille.
 Noteworthy changes in this release
 ==================================
 
-This release is mostly the work of Bert Frees. He has put in a lot of
-work and pushed some major improvements with regards to how emphasis is
-handled (and how this is documented). He fixed a crash when reading URLs
-using computer braille. He also worked with many contributors to get
-their improvements in. So we have better support for UEB, Dutch, Urdu,
-Malayalam, Arabic, Bashkir, Uzbek, Russian computer braille and for
-EBAE. I'd like to thank everybody for helping to bring liblouis forward.
+This is a major release. On the Braille tables side there is a new table
+for German grade 2 with capitalization and there are updates to the
+Dutch, German Hungarian, Punjabi, Russian, UK Braille Computer Notation
+and Slovak tables. Christian added a new opcode to indicate the end of a
+number where the number doesn't end at a space character. Last but not
+least Samuel, Martin and Han have put a lot of work into checking for
+and fixing memory problems.
+
+I'd like to thank everybody for helping to bring liblouis forward.
 
 For a detailed list of all the changes refer to the list of closed
 issues [3]_.
@@ -32,64 +34,64 @@ issues [3]_.
 New features
 ------------
 
--  A new opcode ``noemphchars`` was added. This gives you more control
-   over the placement and scope of various emphasis indicators. Thanks
-   to Bert Frees.
+-  Add a new opcode ``nonumsign`` that helps with indicating the end of
+   a number when it doesn't occur at the end at the end of a word such
+   as '123abc' for example. For more details see the documentation.
+   Thanks to Christian Egli.
 
 Bug fixes
 ---------
 
--  Fix an endless loop when using ``compbrlAtCursor`` thanks to Bert
-   Frees
+-  Prevent a memory overflow in ``compilePassOpcode`` thanks to Martin
+   Gieseking. This was reported in CVE-2022-26981 [4]_ and should now
+   be fixed.
+-  Prevent processing of characters beyond the string end in
+   ``parseChars`` thanks to Martin Gieseking.
+-  Prevent an invalid memory writes in ``compileRule``. Thanks to Han
+   Zheng for reporting it and to Christian Egli for fixing it.
 
 Braille table improvements
 --------------------------
 
--  Improvements to US EBAE conformance with BANA emphasis guidelines
-   thanks to Benetech.org
--  Fixed a problem with apostrophe in Malayalam thanks to Jake Kyle
--  Improvements to contraction use in UEB thanks to James Bowden. In
-   particular the checkmark (U+2713) is added, the emdash (U+2014) is
-   fixed, the right single quote used as apostrophe between letters is
-   fixed and finally some more accented letters have been added.
--  Improvements to Urdu Braille and Malayalam thanks to Jake Kyle
--  Add characters for Bashkir and Uzbek languages to the Russian
-   computer braille table. Thanks to Andrey Yakuboy.
--  New table for Bashkir uncontracted braille thanks to Rustam
-   Churagulov and Gabidullin Yunir.
--  Updated ``&lt;`` and ``&gt;`` symbols in the Arabic tables thanks to
-   Ikrami Ahmad.
--  Improvements to Dutch thanks to Bert Frees.
+-  Improvements to German braille:
 
-   -  Every word part in a capitalized compound word counts in the
-      length of a passage.
-   -  ``begcapsphrase`` is allowed to start in a word preceded by
-      punctuation.
+   -  Improve handling of single letters in grade 2 thanks to Mischa
+      Künzle.
+   -  Improve handling of emphasis thanks to Bert Frees.
+   -  Add a table for grade 2 *with capitalization* thanks to Christian
+      Egli.
 
--  Improved translation of ligatures in UEB thanks to Bert Frees.
--  Multiple improvements to the Russian literary braille thanks to
-   Andrey Yakuboy and Bert Frees:
+-  Fix a problem with Ñ in Dutch braille thanks to Paul Rambags
+-  Updated Slovak Braille table to be inline with the 2021 Slovak
+   braille usage guidelines.
+-  Fixed a problem with the '+' symbol in UK Braille Computer Notation
+   thanks to Mario Arias.
+-  Major improvements to the Hungarian braille tables thanks to Attila
+   Hammer.
+-  Make Punjabi table to behave the same as Duxbury in forward
+   translation and more reliably than Duxbury in back translation.
+   Thanks to Jake Kyle.
+-  Improvements to the Russian and other Cyrillic tables thanks to
+   Andrey Yakuboy:
 
-   -  Many new symbols (punctuation, bullets, math symbols, etc) have
-      been added.
-   -  The table now includes the international phonetic alphabet table.
-   -  Punctuation after digits and fractions is now marked with dot 6 to
-      avoid ambiguities.
-   -  Other changes to conform better with Russian braille rules.
-   -  A new table that indicates capital letters was added. This is the
-      new recommended Russian table for braille display users.
-   -  Removed the old ``ru-ru-g1.utb`` in favor of ``ru-litbrl.ctb`` and
-      ``ru-litbrl-detailed.utb``.
+   -  Now all Russian based tables return braille Unicode braille by
+      default when forward translating, no need to include
+      ``ru-unicode.dis`` manually.
+   -  French letters (æ, ë and ï) have been added to the Russian
+      literary braille table.
 
 Other changes
 -------------
 
--  Support for Python 2 has been removed. The python bindings now only
-   support Python 3. The deprecation notice was announced in Release
-   3.13 and the removal is finally done now.
--  Improvements to the placement of emphasis and capital indicators.
--  The documentation for the emphasis opcodes has been further improved
-   thanks to Bert Frees.
+-  Integrate sanitizer tests in the CI pipeline and fix a large number
+   of memory problems (leaks, overflow and undefined behavior) thanks to
+   Samuel Thibault.
+-  Removed the &quot;experimental&quot; label from the functions
+   ``lou_indexTables``, ``lou_findTable``, ``lou_findTables``,
+   ``lou_getTableInfo`` and ``lou_listTables`` (the meta data query
+   API).
+-  Fix a build problem when using Clang 11 on macOS thanks to Robert
+   Scott.
 
 Deprecation notice
 ------------------
@@ -99,13 +101,10 @@ Deprecation notice
 Backwards incompatible changes
 ------------------------------
 
--  ``emphmodechars`` can and must now be set per emphasis class.
+-  None
 
 Invisible changes
 -----------------
-
--  The emphasis and capitalization handling code has seen major
-   streamlining, simplification and tidying thanks to Bert Frees.
 
 New, renamed or removed tables
 ------------------------------
@@ -113,25 +112,23 @@ New, renamed or removed tables
 New
 ~~~
 
--  ba.utb
--  ru-litbrl-detailed.utb
--  en-us-emphasis.uti
+-  de-g2-detailed.ctb
 
 Renamed
 ~~~~~~~
 
-None
+-  None
 
 Removed
 ~~~~~~~
 
--  ru-ru-g1.utb
+-  None
 
 Next release
 ============
 
-The next release will be published on March 8 2021 so please keep up the
-excellent work and keep those improvements coming.
+The next release will be published on September 5 2022 so please keep up
+the excellent work and keep those improvements coming.
 
 Share and Enjoy!
 
@@ -147,4 +144,7 @@ Footnotes
    https://github.com/liblouis/liblouisutdml
 
 .. [3]
-   https://github.com/liblouis/liblouis/milestone/26?closed=1
+   https://github.com/liblouis/liblouis/milestone/32?closed=1
+
+.. [4]
+   https://github.com/advisories/GHSA-xrp8-mw8v-p6mq

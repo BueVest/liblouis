@@ -5,6 +5,8 @@ EXTRA_DIST =					\
 	ar-ar-g1_harness.yaml			\
 	ar-ar-g2.yaml				\
 	ba.yaml					\
+	bel.yaml				\
+	bg.yaml					\
 	chr-us-g1_harness.yaml			\
 	cop-eg.yaml				\
 	cs_harness.yaml				\
@@ -23,22 +25,24 @@ EXTRA_DIST =					\
 	da-dk-g28-dictionary_harness.yaml	\
 	da-dk-g28.yaml				\
 	da-dk-g28l.yaml				\
-	de-ch-g1.yaml				\
+	de-comp6.yaml				\
 	de-de-comp8.yaml			\
-	de-emphasis.yaml			\
 	de-eurobrl6.yaml			\
-	de-g0-bidi-dictionary.yaml		\
-	de-g0-bidi-specs.yaml			\
-	de-g0-specs.yaml			\
-	de-g1-bidi-dictionary.yaml		\
-	de-g1-bidi-specs.yaml			\
-	de-g1-specs.yaml			\
-	de-g2-specs.yaml			\
+	de-g0-detailed-dictionary.yaml		\
+	de-g0-detailed-specs.yaml		\
+	de-g0.yaml				\
+	de-g1-detailed-dictionary.yaml		\
+	de-g1-detailed-specs.yaml		\
+	de-g1.yaml				\
+	de-g1-dictionary.yaml			\
+	de-g2.yaml				\
+	de-g2-detailed-specs.yaml		\
+	de-g2-dictionary.yaml			\
+	de-g2-sbs.yaml				\
 	el-backward.yaml			\
 	el-forward.yaml				\
 	en-g3.yaml			\
-	en-GB-g2_backward.yaml			\
-	en-GB-g2_harness.yaml			\
+	en-GB-g2.yaml				\
 	en-gb-g1_harness.yaml			\
 	en-nabcc.yaml				\
 	en-ueb-02-stand_alone.yaml		\
@@ -88,12 +92,21 @@ EXTRA_DIST =					\
 	hu-hu-g1_backward.yaml			\
 	hu-hu-g1_harness.yaml			\
 	hu-hu-g1-hyph_harness.yaml		\
+	hu-hu-g1_braille_input_backward.yaml	\
+	hu-hu-g1_braille_input_forward.yaml	\
+	hu-hu-g1-numbers.yaml			\
+	hu-hu-g1_special_consonants.yaml			\
 	hu-hu-g2_harness.yaml			\
 	hu-hu-g2_backward.yaml			\
+	hu-hu-g2-numbers.yaml			\
 	iu-ca-g1_harness.yaml			\
+	ja-kantenji.yaml			\
+	kk.yaml					\
+	kmr.yaml				\
 	ko-2006-g2_harness.yaml			\
 	ko-g2_harness.yaml			\
 	litdigits6Dots_backward.yaml		\
+	lg-ug-g1.yaml				\
 	lt-6dot_harness.yaml			\
 	lt_harness.yaml				\
 	lv_harness.yaml				\
@@ -101,7 +114,6 @@ EXTRA_DIST =					\
 	mn-MN_harness.yaml			\
 	ms-my-g2.yaml				\
 	nl-comp8_harness.yaml			\
-	nl-NL-g0_harness.yaml			\
 	nl-g0_harness.yaml			\
 	no_8dot_harness.yaml			\
 	no_backward.yaml			\
@@ -109,22 +121,28 @@ EXTRA_DIST =					\
 	no_g2_harness.yaml			\
 	no_harness.yaml				\
 	no_typeform_harness.yaml		\
-	Pl-Pl-g1_backward.yaml			\
-	Pl-Pl-g1_harness.yaml			\
+	pa.yaml					\
+	pl-g1.yaml				\
 	pl-pl-comp8_harness.yaml		\
 	pt-g1.yaml				\
 	ru.yaml					\
+	rw-rw-g1.yaml			  	\
+	sah.yaml				\
 	sk-g1_harness.yaml			\
 	sl-g1.yaml				\
 	spaces.yaml				\
 	sr-g1_harness.yaml			\
+	st-g2.yaml			  	\
 	ta-ta-g1_harness.yaml			\
+	tt.yaml					\
 	uk.yaml					\
 	ur-pk-g2.yaml				\
 	uz.yaml					\
-	vi-g1_backward.yaml			\
-	vi-g1_harness.yaml			\
+	ve-g2.yaml			  	\
+	vi.yaml					\
+	xh-g2.yaml				\
 	zh-chn.yaml				\
 	zh-tw.yaml				\
+	zhcn-cbs.yaml				\
 	zhcn-g1.yaml				\
 	zhcn-g2.yaml
