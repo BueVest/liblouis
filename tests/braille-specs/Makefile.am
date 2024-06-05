@@ -1,5 +1,7 @@
 EXTRA_DIST =					\
 	afr-za-g2.yaml				\
+	akk.yaml				\
+	akk-borger.yaml				\
 	ar-ar-comp8.yaml			\
 	ar-ar-g1.yaml				\
 	ar-ar-g1_harness.yaml			\
@@ -7,24 +9,20 @@ EXTRA_DIST =					\
 	ba.yaml					\
 	bel.yaml				\
 	bg.yaml					\
+	bn.yaml					\
 	chr-us-g1_harness.yaml			\
 	cop-eg.yaml				\
 	cs_harness.yaml				\
 	cs-comp8_harness.yaml			\
-	da-dk-g08.yaml				\
-	da-dk-g16.yaml				\
-	da-dk-g16-dictionary_harness.yaml	\
-	da-dk-g16-lit.yaml			\
-	da-dk-g18-dictionary_harness.yaml	\
-	da-dk-g18.yaml				\
-	da-dk-g26.yaml				\
+	cuneiform-transliterated.yaml		\
+	da-dk_1993.yaml				\
+	da-dk-6dot.yaml				\
+	da-dk-8dot.yaml				\
+	da-dk-g26-dictionary_harness_1993.yaml	\
 	da-dk-g26-dictionary_harness.yaml	\
-	da-dk-g26-lit.yaml			\
-	da-dk-g26l.yaml				\
-	da-dk-g26l-lit.yaml			\
+	da-dk-g28-dictionary_harness_1993.yaml	\
 	da-dk-g28-dictionary_harness.yaml	\
-	da-dk-g28.yaml				\
-	da-dk-g28l.yaml				\
+	de-blista-dictionary.yaml 		\
 	de-comp6.yaml				\
 	de-de-comp8.yaml			\
 	de-eurobrl6.yaml			\
@@ -46,14 +44,7 @@ EXTRA_DIST =					\
 	en-GB-g2.yaml				\
 	en-gb-g1_harness.yaml			\
 	en-nabcc.yaml				\
-	en-ueb-02-stand_alone.yaml		\
-	en-ueb-03-symbols.yaml			\
-	en-ueb-05-grade_1_mode.yaml		\
-	en-ueb-06-numeric_mode.yaml		\
-	en-ueb-08-capitalization.yaml		\
-	en-ueb-09-typeforms.yaml		\
-	en-ueb-10-07-contractions.yaml		\
-	en-ueb-10-13-contractions.yaml		\
+	en-ueb.yaml				\
 	en-ueb-g1_backward.yaml			\
 	en-ueb-g1_harness.yaml			\
 	en-ueb-g2-dictionary_harness.yaml	\
@@ -61,7 +52,6 @@ EXTRA_DIST =					\
 	en-ueb-g2_backward_no_dis.yaml		\
 	en-ueb-computer-code.yaml		\
 	en-ueb-math.yaml			\
-	en-ueb-repeated-underscores.yaml	\
 	en-ueb-symbols_harness.yaml		\
 	en-us-comp6.yaml			\
 	en-us-emphasis_harness.yaml		\
@@ -76,6 +66,7 @@ EXTRA_DIST =					\
 	fa-ir-comp8-harness.yaml		\
 	fa-ir-g1-harness.yaml			\
 	fi_harness.yaml				\
+	fil.yaml				\
 	fr-bfu-comp6.yaml			\
 	fr-bfu-comp8.yaml			\
 	fr-bfu-g2.yaml				\
@@ -85,66 +76,74 @@ EXTRA_DIST =					\
 	grc-international-common.yaml		\
 	grc-international-composed.yaml		\
 	grc-international-decomposed.yaml	\
+	grc-international-es.yaml	\
+	hbo.yaml				\
 	he-IL.yaml				\
 	hi_harness.yaml				\
 	hr-8dots_harness.yaml			\
-	hu-hu-comp8_backward.yaml		\
 	hu-hu-comp8_harness.yaml		\
-	hu-hu-g1_backward.yaml			\
 	hu-hu-g1_harness.yaml			\
 	hu-hu-g1-hyph_harness.yaml		\
 	hu-hu-g1_braille_input_backward.yaml	\
 	hu-hu-g1_braille_input_forward.yaml	\
-	hu-hu-g1-numbers.yaml			\
-	hu-hu-g1_special_consonants.yaml			\
+	hu-hu-g1_dictionary_numbers.yaml			\
+	hu-hu-g1_dictionary_special_consonants.yaml			\
 	hu-hu-g2_harness.yaml			\
-	hu-hu-g2_backward.yaml			\
-	hu-hu-g2-numbers.yaml			\
+	hu-hu-g2_dictionary_numbers.yaml			\
 	iu-ca-g1_harness.yaml			\
 	ja-kantenji.yaml			\
+	ka.yaml					\
 	kk.yaml					\
 	kmr.yaml				\
 	ko-2006-g2_harness.yaml			\
 	ko-g2_harness.yaml			\
 	litdigits6Dots_backward.yaml		\
 	lg-ug-g1.yaml				\
+	lo.yaml					\
 	lt-6dot_harness.yaml			\
 	lt_harness.yaml				\
 	lv_harness.yaml				\
 	ml.yaml					\
 	mn-MN_harness.yaml			\
 	ms-my-g2.yaml				\
+	nemeth.yaml				\
 	nl-comp8_harness.yaml			\
 	nl-g0_harness.yaml			\
 	no_8dot_harness.yaml			\
-	no_backward.yaml			\
-	no_g1_harness.yaml			\
-	no_g2_harness.yaml			\
-	no_harness.yaml				\
-	no_typeform_harness.yaml		\
+	no.yaml					\
+	ny-mw.yaml				\
 	pa.yaml					\
 	pl-g1.yaml				\
 	pl-pl-comp8_harness.yaml		\
 	pt-g1.yaml				\
+	ro-g0.yaml				\
 	ru.yaml					\
 	rw-rw-g1.yaml			  	\
 	sah.yaml				\
 	sk-g1_harness.yaml			\
 	sl-g1.yaml				\
 	spaces.yaml				\
-	sr-g1_harness.yaml			\
+	sr.yaml					\
 	st-g2.yaml				\
 	sv.yaml					\
+	sw-ke-dictionary.yaml			\
+	sw-ke.yaml				\
+	syc.yaml				\
 	ta-ta-g1_harness.yaml			\
+	th.yaml					\
+	tr.yaml					\
 	tt.yaml					\
+	uga.yaml				\
 	uk.yaml					\
 	ur-pk-g2.yaml				\
 	uz.yaml					\
 	ve-g2.yaml				\
 	vi.yaml					\
 	xh-g2.yaml				\
+	yi.yaml				\
 	zh-chn.yaml				\
 	zh-tw.yaml				\
+	zh-tw-dictionary.yaml				\
 	zhcn-cbs.yaml				\
 	zhcn-g1.yaml				\
 	zhcn-g2.yaml

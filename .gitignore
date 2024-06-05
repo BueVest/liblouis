@@ -157,9 +157,20 @@ TAGS
 /python/louis/__init__.py
 /python/louis/*.pyc
 
+# /python/examples/
+/python/examples/Makefile
+/python/examples/Makefile.in
+
+# /python/tests/
+/python/tests/Makefile
+/python/tests/Makefile.in
+
+
 # /tables
 /tables/Makefile
 /tables/Makefile.in
+/tables/nl-NL-g0.utb
+/tables/nl-chardefs.uti
 
 # /tests/
 /tests/.libs
@@ -217,6 +228,23 @@ TAGS
 /tests/braille-specs/Makefile.in
 /tests/braille-specs/*.log
 /tests/braille-specs/*.trs
+
+# /tests/fuzzing/
+/tests/fuzzing/Makefile
+/tests/fuzzing/Makefile.in
+/tests/fuzzing/.deps
+/tests/fuzzing/.dirstamp
+/tests/fuzzing/.libs
+/tests/fuzzing/*.profdata
+/tests/fuzzing/*.profraw
+/tests/fuzzing/CORPUS/*
+/tests/fuzzing/crash-*
+/tests/fuzzing/fuzz_backtranslate
+/tests/fuzzing/fuzz_translate
+/tests/fuzzing/fuzz_translate_generic
+/tests/fuzzing/fuzz-*.log
+/tests/fuzzing/leak-*
+/tests/fuzzing/oom-*
 
 # /tests/yaml/
 /tests/yaml/Makefile

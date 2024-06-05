@@ -1321,11 +1321,10 @@ back_swapTest(const TranslationTableHeader *table, const InString *input, int *p
 		for (curTest = 0; curTest < swapRule->charslen; curTest++) {
 			if (input->chars[curSrc] != swapRule->charsdots[curTest]) break;
 		}
-		if (curTest < swapRule->charslen)
-			if (curTest < swapRule->charslen) {
-				*pos = curSrc;
-				return 1;
-			}
+		if (curTest < swapRule->charslen) {
+			*pos = curSrc;
+			return 1;
+		}
 		curSrc++;
 		curLen++;
 	}
@@ -1385,7 +1384,7 @@ back_passDoTest(const TranslationTableHeader *table, int pos, const InString *in
 		const widechar **passInstructions, int *passIC, PassRuleMatch *match) {
 	int k;
 	int m;
-	int not = 0;
+	int notOperator = 0;
 	TranslationTableCharacterAttributes attributes;
 	*passInstructions = &currentRule->charsdots[currentRule->charslen];
 	*passIC = 0;
@@ -1416,7 +1415,7 @@ back_passDoTest(const TranslationTableHeader *table, int pos, const InString *in
 			*passIC += 2;
 			break;
 		case pass_not:
-			not = !not;
+			notOperator = !notOperator;
 			(*passIC)++;
 			continue;
 		case pass_string:
@@ -1487,8 +1486,8 @@ back_passDoTest(const TranslationTableHeader *table, int pos, const InString *in
 			if (_lou_handlePassVariableTest(*passInstructions, passIC, &itsTrue)) break;
 			return 0;
 		}
-		if ((!not&&!itsTrue) || (not&&itsTrue)) return 0;
-		not = 0;
+		if ((!notOperator && !itsTrue) || (notOperator && itsTrue)) return 0;
+		notOperator = 0;
 	}
 	return 1;
 }

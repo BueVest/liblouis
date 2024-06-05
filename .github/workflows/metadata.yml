@@ -6,8 +6,17 @@ on:
     branches: [ master ]
     paths:
       - 'tables/*'
+      - 'liblouis/metadata.c'
+      - 'extra/generate-display-names/*'
   pull_request:
     branches: [ master ]
+    paths:
+      - 'tables/*'
+      - 'liblouis/metadata.c'
+      - 'extra/generate-display-names/*'
+
+permissions:  # added using https://github.com/step-security/secure-workflows
+  contents: read
 
 jobs:
   metadata-test:
@@ -16,7 +25,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Harden Runner
+      uses: step-security/harden-runner@a4aa98b93cab29d9b1101a6143fb8bce00e2eac4 # v2.7.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+    - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
     - name: Install dependencies
       run: sudo apt-get update -qq && sudo apt-get install -y libyaml-dev texinfo texlive golang
     - name: autogen && configure
@@ -29,7 +43,7 @@ jobs:
       run: make -C extra/generate-display-names
     - name: Store the log
       if: ${{ failure() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
       with:
         name: generate-display-names.log
         path: extra/generate-display-names/generate.log

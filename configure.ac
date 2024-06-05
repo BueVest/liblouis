@@ -1,7 +1,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.68)
-AC_INIT([Liblouis], [3.23.0], [liblouis-liblouisxml@freelists.org], [liblouis], [http://www.liblouis.org])
+AC_INIT([Liblouis], [3.30.0], [liblouis-liblouisxml@freelists.org], [liblouis], [http://www.liblouis.io])
 AC_CONFIG_SRCDIR([liblouis/lou_backTranslateString.c])
 AM_CONFIG_HEADER(liblouis/config.h)
 
@@ -32,14 +32,24 @@ AC_ARG_WITH([yaml],
   [with_yaml=$withval],
   [])
 
+# Check if the user wants to enable coverage
+AC_ARG_WITH([coverage],
+    [AS_HELP_STRING([--with-coverage], [enable clang coverage in the fuzzer tests (also add coverage to lib sources) @<:@default=no@:>@])],
+    [])
+
+# Check if the user wants to compile fuzzer
+AC_ARG_WITH([fuzzer],
+    [AS_HELP_STRING([--with-fuzzer], [enable fuzzer for function lou_translateString @<:@default=no@:>@])],
+    [])
+
 # Checks for libraries.
-if test "x$with_yaml" == xno; then
+if test "x$with_yaml" = xno; then
   AC_DEFINE([WITHOUT_YAML],[1],[Disable YAML tests])
 else
   AC_CHECK_LIB([yaml], [yaml_parser_initialize])
 fi
 
-AM_CONDITIONAL([WITH_YAML], [test "x$ac_cv_lib_yaml_yaml_parser_initialize" == xyes -a "x$with_yaml" != xno])
+AM_CONDITIONAL([WITH_YAML], [test "x$ac_cv_lib_yaml_yaml_parser_initialize" = xyes -a "x$with_yaml" != xno])
 
 # If libyaml is missing warn or die depending on --with-yaml
 if test x$ac_cv_lib_yaml_yaml_parser_initialize != xyes; then
@@ -49,6 +59,23 @@ if test x$ac_cv_lib_yaml_yaml_parser_initialize != xyes; then
   *) AC_MSG_WARN([libyaml was not found. YAML tests will be skipped]);;
   esac
 fi
+
+# Check for coverage 
+AM_CONDITIONAL(USE_COVERAGE, [test x"$with_coverage" = xyes])
+
+# Check for fuzzer 
+AC_MSG_CHECKING([whether to enable fuzzer])
+AS_IF([test "$CC" != "clang" || test "$CXX" != "clang++"], [with_fuzzer=no])
+AS_IF([test "x$with_fuzzer" = "xyes"],
+      [
+        AC_MSG_RESULT([yes])
+        HOST_CPU="`$CC -print-multiarch | sed -e 's/-.*//'`"
+        CFLAGS="$CFLAGS -fsanitize=fuzzer-no-link"
+        LIBFUZZER_NO_MAIN="`$CC $CFLAGS -print-runtime-dir`/libclang_rt.fuzzer_no_main-$HOST_CPU.a -lstdc++ -lm"
+      ],
+      AC_MSG_RESULT([no]))
+AC_SUBST(LIBFUZZER_NO_MAIN)
+AM_CONDITIONAL(USE_FUZZER, [test "x$with_fuzzer" = "xyes"])
 
 # Checks for header files.
 AC_HEADER_STDC
@@ -77,7 +104,7 @@ LIBLOUIS_CURRENT=20
 
 # increment any time the source changes; set to 0 if you increment
 # CURRENT
-LIBLOUIS_REVISION=11
+LIBLOUIS_REVISION=18
 
 # increment if any interfaces have been added; set to 0 if any
 # interfaces have been changed or removed. removal has precedence over
@@ -97,27 +124,12 @@ AC_HEADER_STDC
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
-# catch as many warnings as possible with the help of the gnulib manywarnings module
-gl_MANYWARN_ALL_GCC([warnings])
-# Set up the list of the pointless, undesired warnings.
-nw=
-nw="$nw -Wsystem-headers"       # Don't let system headers trigger warnings
-nw="$nw -Wsuggest-attribute=pure"   # ignore recommendations to use
-nw="$nw -Wsuggest-attribute=format" # attributes, most of these only
-nw="$nw -Wsuggest-attribute=const"  # work in gcc
-nw="$nw -Wsuggest-attribute=noreturn"
-# Enable all GCC warnings not in this list.
-gl_MANYWARN_COMPLEMENT([warnings], [$warnings], [$nw])
-for w in $warnings; do
-  gl_WARN_ADD([$w])
-done
-
 # define an additional recursive make target to format the sources.
 # Also check if clang-format is installed
 AM_EXTRA_RECURSIVE_TARGETS([format-sources])
-# prefer version 9 of clang-format as it is part of any release since ubuntu 20.04
-AC_CHECK_PROGS([SOURCE_FORMATTER], [clang-format-9 clang-format])
-AM_CONDITIONAL([HAVE_SOURCE_FORMATTER], [test x$SOURCE_FORMATTER = xclang-format -o x$SOURCE_FORMATTER = xclang-format-9])
+# prefer version 14 of clang-format as it is part of Ubuntu 22.04 LTS
+AC_CHECK_PROGS([SOURCE_FORMATTER], [clang-format-14 clang-format])
+AM_CONDITIONAL([HAVE_SOURCE_FORMATTER], [test x$SOURCE_FORMATTER = xclang-format -o x$SOURCE_FORMATTER = xclang-format-14])
 
 # GNU help2man creates man pages from --help output; in many cases,
 # this is sufficient, and obviates the need to maintain man pages
@@ -164,7 +176,7 @@ AC_ARG_ENABLE([macros],
   [enable_macros=$enableval],
   [])
 
-if test "x$enable_macros" == xyes; then
+if test "x$enable_macros" = xyes; then
    AC_DEFINE([ENABLE_MACROS],[1],[Enable macros])
 fi
 AM_CONDITIONAL([ENABLE_MACROS], [test "x$enable_macros" = xyes])
@@ -213,6 +225,7 @@ AC_CONFIG_FILES([
 	liblouis.pc
 	tests/Makefile
 	tests/braille-specs/Makefile
+	tests/fuzzing/Makefile
 	tests/resolve_table.h
 	tests/tables/Makefile
 	tests/tables/emphclass/Makefile
@@ -228,6 +241,8 @@ AC_CONFIG_FILES([
 	python/Makefile
 	python/setup.py
 	python/louis/Makefile
+	python/examples/Makefile
+	python/tests/Makefile
 	tools/Makefile
 	tools/gnulib/Makefile
 	tools/lou_maketable.d/Makefile
