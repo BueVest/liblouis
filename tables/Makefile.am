@@ -5,6 +5,8 @@ table_files = \
 	afr-za-g2.ctb \
 	akk.utb \
 	akk-borger.utb \
+	ancient-languages-borger.utb \
+	ancient-languages-us.utb \
 	ar-ar-comp8.utb \
 	ar-ar-g1-core.uti \
 	ar-ar-g1.utb \
@@ -47,6 +49,7 @@ table_files = \
 	cop-eg-comp8.utb \
 	corrections.cti \
 	countries.cti \
+	critical-apparatus.uti \
 	cs-chardefs.cti \
 	cs-comp8.utb \
 	cs-g1.ctb \
@@ -167,6 +170,7 @@ table_files = \
 	grc-international-composed.uti \
 	grc-international-decomposed.uti \
 	grc-international-en.utb \
+	grc-international-en-composed.utb \
 	grc-international-es.utb \
 	gr-pl-comp8.uti \
 	gu-in-g1.utb \
@@ -175,6 +179,8 @@ table_files = \
 	gu.tbl \
 	haw-us-g1.ctb \
 	hbo.utb \
+	he-common-consonants.uti \
+	he-common-vowels-ihbc.uti \
 	he-IL.utb \
 	he-IL-comp8.utb \
 	hi-in-g1.utb \
@@ -225,6 +231,7 @@ table_files = \
 	it.tbl \
 	iu-ca-g1.ctb \
 	ja-kantenji.utb \
+	ja-kantenji-ucs2.utb \
 	ka.utb \
 	ka-in-g1.utb \
 	kannada.cti \
@@ -383,6 +390,7 @@ table_files = \
 	te.tbl \
 	text_nabcc.dis \
 	th-g0.utb \
+	th-g1.utb \
 	th-comp8-backward.utb \
 	tr.ctb \
 	tr-g1.ctb \
