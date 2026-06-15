@@ -1,6 +1,6 @@
-# Liblouis: Danish table for 8 dots grade 1 2022
+# Liblouis: Greenlandic table for 8 dots grade 1
 #
-#  Copyright (C) 2014, 2016-2024, Bue Vester-Andersen <bue@vester-andersen.dk>
+#  Copyright (C) 2026, Bue Vester-Andersen <bue@vester-andersen.dk>
 #
 #  This file is part of liblouis.
 #
@@ -20,30 +20,28 @@
 #
 #------------
 #
-# This  is the Danish table for 8 dots grade 1 (fuldskrift) 2022.
-# Use this table for translation and back-translation of Danish 8 dots grade 1.
-# See also: Den Danske Punktskrift 2022
-#           Det Danske Punktskriftsnævn
-#           https://www.blind.dk/punktskrift-2022
+# This  is the Greenlandic table for 8 dots grade 1.
+# Use this table for translation and back-translation of Greenlandic 8 dots grade 1.
+# See also: "Grønlandsk punktskrift"
+#           ISI
+#           http://www.isi.gl
 #
-# Version: Bue Vester-Andersen, December 2022
+# Version: Bue Vester-Andersen, June 2026
 
 ### Table Metadata
 
-#-name: Dansk fuldskrift 8-punkt 2022
-#-index-name: Danish, uncontracted, 8-dot, 2022
-#-display-name: Danish 8-dot uncontracted braille (2022 standard)
+#-name: Greenlandic 8 dots grade 1
+#-index-name: Greenlandic, uncontracted, 8-dot, 2022
+#-display-name: Greenlandic 8-dots uncontracted braille 
 
-#+language: da
+#+language: kl
 #+type: literary
 #+contraction: no
 #+grade: 1
 #+dots: 8
 #+direction: both
-#+system: ddp
-#+version: 2022
 
-# Display upcodes
+# Default display file
 include da-dk-octobraille.dis
 
 ### Character definitions ###
@@ -261,15 +259,15 @@ noback punctuation \x0085 56-3-3-3 #Elipsis (0x85)
 
 # Misc unicode characters
 
-# Many of the characters below and in da-dk-8miscChars.cti have not
-# been defined in the Danish Braille standard.
+# Many of the characters below  have not
+# been defined in the Greenlandic Braille standard.
 # The current implementation is purely experimental and subject to change.
 # Math chars and arrows etc. are inspired by UEB.
 
 # Latin Extended-A (\x0100-\x017f)
 
 # For each accented letter, the first occurring instance is chosen for back-translation.
-# There are no rules about this in the specs of Danish Braille,
+# There are no rules about this in the specs of Greenlandic Braille,
 # So the choice is arbitrary and may change over time.
 
 uppercase \x0100 5-17            Latin letter a with macron

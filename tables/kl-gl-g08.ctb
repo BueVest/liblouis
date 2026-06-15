@@ -1,6 +1,6 @@
-# Liblouis: Danish table for 8 dots computer Braille (G0) 2022
+# Liblouis: Greenlandic table for 8 dots computer Braille (G0)
 #
-#  Copyright (C) 2014, 2016-2024, Bue Vester-Andersen <bue@vester-andersen.dk>
+#  Copyright (C) 2026, Bue Vester-Andersen <bue@vester-andersen.dk>
 #
 #  This file is part of liblouis.
 #
@@ -20,30 +20,28 @@
 #
 #------------
 #
-# This  is the Danish table for 8 dots computer Braille DDP2022.
-# Use this table for translation and back-translation of Danish 8 dots computer Braille (Octo-Braille).
-# See also: Den Danske Punktskrift 2022
-#           Det Danske Punktskriftsnævn
-#           https://www.blind.dk/punktskrift-2022
+# This  is the Greenlandic table for 8 dots computer Braille.
+# Use this table for translation and back-translation.
+# See also: "Grønlandsk punktskrift"
+#           ISI
+#           http://www.isi.gl
 #
-# Version: Bue Vester-Andersen, December 2022
+# Version: Bue Vester-Andersen, June 2026
 
 ### Table Metadata
 
-#-name: Dansk computer 2022
-#-index-name: Danish, computer, 2022
-#-display-name: Danish computer braille (2022 standard)
+#-name: Greenlandic computer
+#-index-name: Greenlandic, computer
+#-display-name: Greenlandic computer braille
 
-#+language: da
+#+language: kl
 #+type: computer
 #+contraction: no
 #+grade: 0
 #+dots: 8
 #+direction: both
-#+system: ddp
-#+version: 2022
 
-# Display upcodes
+# Default display file
 include da-dk-octobraille.dis
 
 ### Character definitions
