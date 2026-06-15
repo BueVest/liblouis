@@ -247,6 +247,9 @@ table_files = \
 	kha.tbl \
 	kh-in-g1.utb \
 	kk.utb \
+	kl-gl-g08.ctb \
+	kl-gl-g16.ctb \
+	kl-gl-g18.ctb \
 	km-g1.utb \
 	kmr.tbl \
 	kn.tbl \
