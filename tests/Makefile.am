@@ -155,6 +155,7 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/ja-kantenji.yaml			  \
 	braille-specs/ka.yaml				  \
 	braille-specs/kk.yaml				  \
+	braille-specs/kl-gl.yaml			  \
 	braille-specs/kmr.yaml				  \
 	braille-specs/ko-2006-g2_harness.yaml		  \
 	braille-specs/ko-g2_harness.yaml		  \
